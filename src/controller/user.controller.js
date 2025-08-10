@@ -397,16 +397,7 @@ const handleGoogleCallback = async (req, res) => {
       );
     }
 
-    // Option 1: Redirect to frontend with token in URL params (not recommended for production)
-    // const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3001';
-    // return res.redirect(`${frontendUrl}/auth/success?token=${token}`);
-
-    // Option 2: Redirect to frontend with success page that fetches token
-    // const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3001';
-    // Store token temporarily in session or cache with short expiration
-    // return res.redirect(`${frontendUrl}/auth/success?authId=${temporaryId}`);
-
-    // Option 3: Return JSON response (for API-only approach)
+    
     return res.status(200).json({
       message: "Google authentication successful",
       token,
