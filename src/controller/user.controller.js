@@ -75,13 +75,13 @@ const verifyEmail = async (req, res) => {
     return res.status(400).json({ message: "No token" });
   }
   try {
-    const user = await user.findOne({ emailToken: token });
+    const user = await User.findOne({ emailToken: token });
     if (!user) {
       return res
         .status(404)
         .json({ message: "User with this token doesn't exist" });
     }
-    user.isVerify = true;
+    user.isVerified = true;
     user.emailToken = null;
     await user.save();
     return res.status(200).json({ message: "User Verify Successfully", user });
